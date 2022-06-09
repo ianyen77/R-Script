@@ -1,3 +1,4 @@
+
 data<-read.csv("arg_test1.csv",row.names = 1, header=TRUE)
 data.matrix<-as.matrix(data)
 #相關性的顯著性檢驗
@@ -18,3 +19,4 @@ corr_final[!lower.tri(corr_final)] <- 0
 #有些數據因為是0所以算不出相關性(na)，我們把她去除
 corr_final[is.na(corr_final)]<-0
 write.csv(corr_final, 'arg_test1_r0.8p0.05.csv', quote = FALSE)
+
