@@ -1,10 +1,10 @@
 library("openxlsx")
 #這邊要在特別注意一下輸入的參數，要調整你的欄名跟列名，sep.names是在設定你要用什麼取代data中的空格
 data<-read.xlsx("C:/Users/USER/Desktop/台水計畫raw data for r test.xlsx",sheet=1,rowNames=T,sep.names=" ")
-#因為rcorr()他的input要是matrix
-data.matrix<-as.matrix(data)
 #相關性檢驗
 library(Hmisc)
+#因為rcorr()他的input要是matrix
+data.matrix<-as.matrix(data)
 corr<-rcorr(data.matrix,type= 'pearson')
 #corr<-as.list(corrx)
 corr$P[corr$P >= 0.05] <- -1
