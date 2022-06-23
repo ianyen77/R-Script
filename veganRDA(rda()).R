@@ -40,7 +40,6 @@ B.plot=B.plot+theme(panel.grid=element_blank())+
                arrow=arrow(angle = 35,length=unit(0.3,"cm")))+
   geom_text(data=B.rda.env,aes(x=B.rda.env[,1],y=B.rda.env[,2],label=rownames(B.rda.env)),size=2.6,
             colour="black",vjust=(0.5-sign(B.rda.env[,1]))/2,angle=(45)*atan(B.rda.env[,2]/B.rda.env[,1]),hjust=(1.5-sign(B.rda.env[,1]))/2,angle=(45)*atan(B.rda.env[,2]/B.rda.env[,1]))+
-  theme(legend.position = "top")
+  theme(legend.position = "top")#+theme(axis.title = element_text(family = "serif", face = "bold", size = 18,colour = "black"))
 print(B.plot)
-#+theme(axis.title = element_text(family = "serif", face = "bold", size = 18,colour = "black"))+
-theme(axis.text = element_text(family = "serif", face = "bold", size = 16,color="black"))
+
