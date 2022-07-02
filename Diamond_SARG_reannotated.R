@@ -15,3 +15,4 @@ Diamond_SARG_hit<-read.xlsx(xlsxFile = "C://Users/USER/Desktop/Practicedate_Blas
 colnames(Diamond_SARG_hit)<-c("qseqid", "gene", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
 Diamond_SARG_hit_annoate<-merge(Diamond_SARG_hit,cc1,all.x = T)
 write.xlsx(Diamond_SARG_hit_annoate,"c:/Users/USER/Desktop/Diamond_SARG_annotate.xlsx",colnames=T)
+ 
