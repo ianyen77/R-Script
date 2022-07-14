@@ -10,6 +10,13 @@ dbpata <- decostand(dbpata, method = 'hellinger')
 dbRDA=dbrda(dbpata ~Free_Chlorine+pH+TOC, envata, dist="bray")
 test<-anova.cca(dbRDA, by="margin", permu=999)
 test
+#這部分跟下面的ordiR2step可以擇一進行這兩都是在進行環境變量的篩選(但因為完美的篩選組合並不存在)
+otu.tab.1<-dbrda(dbpata ~Temperature+Total_Manganese+ORP+pH+TOC+Dissolved_Manganese+Distance+Sulfate+ATP, envata,,dist="bray")
+vif.cca(otu.tab.1)
+mod.u <- step(otu.tab.0,scope = formula(otu.tab.1), test = "perm")# "perm"增加P值等参数
+mod.d <- step(otu.tab.0, scope = (list(lower = formula(otu.tab.0), upper = formula(otu.tab.1))))
+mod.d
+otu.tab.1<-dbrda(dbpata ~Temperature+Total_Manganese+ORP+pH+TOC+Dissolved_Manganese+Distance+Sulfate+ATP, envata,,dist="bray")
 #找不到最佳的combination
 fwd.sel <- ordiR2step(dbrda(dbpata ~ 1, envata, dist="bray"), # lower model limit (simple!)
                       scope = formula(dbRDA), # upper model limit (the "full" model)
